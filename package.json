@@ -3,10 +3,14 @@
   "version": "1.0.0",
   "description": "Chessiko - Chess game platform",
   "main": "dist/index.js",
+  "workspaces": [
+    "packages/backend",
+    "packages/frontend"
+  ],
   "scripts": {
     "dev": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\" \"npm run dev:proxy\"",
-    "dev:backend": "cd packages/backend && npm run dev",
-    "dev:frontend": "cd packages/frontend && npm run dev",
+    "dev:backend": "npm run dev --workspace=packages/backend",
+    "dev:frontend": "npm run dev --workspace=packages/frontend",
     "dev:proxy": "tsx watch index.ts",
     "build": "tsc",
     "start": "node dist/index.js"
